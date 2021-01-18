@@ -33,11 +33,15 @@ public class Project {
     private Date update_At;
 
     @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "project")
+    @JsonIgnore
     private Backlog backlog;
 // bên kia dùng mappedBy thì bên này phải dùng @joinColumn de bieu thi moi quan he 2 chieu
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userId")
+    @JsonIgnore
     private Users users;
+
+    private  String projectLeader;
 
     @PrePersist
     public void onCreate(){
@@ -82,6 +86,22 @@ public class Project {
 
     public void setProjectIdentifier(String projectIdentifier) {
         this.projectIdentifier = projectIdentifier;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
+    public String getProjectLeader() {
+        return projectLeader;
+    }
+
+    public void setProjectLeader(String projectLeader) {
+        this.projectLeader = projectLeader;
     }
 
     public String getDescription() {

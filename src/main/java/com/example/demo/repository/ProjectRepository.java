@@ -12,6 +12,7 @@ import java.util.Optional;
 public interface ProjectRepository extends CrudRepository<Project,Long> {
     @Override
     Iterable<Project> findAllById(Iterable<Long> iterable);
+    Iterable<Project> findAllByProjectLeader(String name);
     Project findByProjectIdentifier(String id);
 
     @Query("SELECT p FROM Project p WHERE p.id = :id")
