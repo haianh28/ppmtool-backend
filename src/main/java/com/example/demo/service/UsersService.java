@@ -22,7 +22,6 @@ public class UsersService {
             users.setConfirmPassword("");
             return usersRepo.save(users);
         } catch (Exception e) {
-            e.printStackTrace();
             // ném ra ngoại lệ
             throw new UsernameAlreadyExitstsException("Username: " + users.getUsername() + " đã tồn tại");
         }
